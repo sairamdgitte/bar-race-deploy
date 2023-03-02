@@ -1,0 +1,300 @@
+
+
+  <!-- HTML -->
+  
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>My Website</title>
+      <!-- Add any necessary CSS stylesheets and JavaScript files here -->
+    </head>
+    <body>
+
+    <h1>Who do you think will win?</h1>
+    <!-- Styles -->
+<style>
+  button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        
+      }
+
+      button:hover {
+        background-color: #0062cc;
+      }
+  #chartdiv {
+    width: 100%;
+    height: 500px;
+  }
+  </style>
+  <div id="chartdiv"></div>
+  <!-- Resources -->
+  <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+  
+  <!-- Chart code -->
+  <script>
+  am5.ready(function() {
+  
+  // Data
+  var allData = {"1990":{"AUSTRALIA":14.0,"BAHRAIN":null,"CANADA":371.0,"CHINA":null,"EGYPT":null,"FINLAND":null,"FRANCE":null,"GERMANY\/FRANCE":null,"HKONG":null,"IND":null,"IRE":null,"ISRAEL":null,"JORDAN":null,"LUXEMBOURG":null,"MALAYSIA":null,"NZ":null,"RUSSIA":null,"SAFR":null,"SINGP":null,"SPAIN":null,"UK":209.0,"USA":811.0},"1991":{"AUSTRALIA":24.0,"BAHRAIN":null,"CANADA":405.0,"CHINA":null,"EGYPT":null,"FINLAND":null,"FRANCE":null,"GERMANY\/FRANCE":null,"HKONG":null,"IND":null,"IRE":null,"ISRAEL":null,"JORDAN":null,"LUXEMBOURG":null,"MALAYSIA":null,"NZ":null,"RUSSIA":null,"SAFR":null,"SINGP":null,"SPAIN":null,"UK":97.0,"USA":661.0},"1992":{"AUSTRALIA":30.0,"BAHRAIN":null,"CANADA":628.0,"CHINA":null,"EGYPT":null,"FINLAND":null,"FRANCE":null,"GERMANY\/FRANCE":null,"HKONG":null,"IND":null,"IRE":null,"ISRAEL":null,"JORDAN":null,"LUXEMBOURG":null,"MALAYSIA":null,"NZ":null,"RUSSIA":null,"SAFR":null,"SINGP":null,"SPAIN":null,"UK":134.0,"USA":1034.0},"1993":{"AUSTRALIA":28.0,"BAHRAIN":null,"CANADA":508.0,"CHINA":null,"EGYPT":null,"FINLAND":null,"FRANCE":null,"GERMANY\/FRANCE":null,"HKONG":null,"IND":null,"IRE":null,"ISRAEL":null,"JORDAN":null,"LUXEMBOURG":null,"MALAYSIA":null,"NZ":null,"RUSSIA":null,"SAFR":null,"SINGP":null,"SPAIN":null,"UK":133.0,"USA":2243.0},"1994":{"AUSTRALIA":37.0,"BAHRAIN":null,"CANADA":446.0,"CHINA":null,"EGYPT":null,"FINLAND":null,"FRANCE":null,"GERMANY\/FRANCE":null,"HKONG":null,"IND":null,"IRE":null,"ISRAEL":null,"JORDAN":null,"LUXEMBOURG":null,"MALAYSIA":null,"NZ":null,"RUSSIA":null,"SAFR":null,"SINGP":null,"SPAIN":null,"UK":59.0,"USA":17042.0},"1995":{"AUSTRALIA":114.0,"BAHRAIN":null,"CANADA":502.0,"CHINA":null,"EGYPT":null,"FINLAND":null,"FRANCE":null,"GERMANY\/FRANCE":null,"HKONG":null,"IND":null,"IRE":null,"ISRAEL":null,"JORDAN":null,"LUXEMBOURG":null,"MALAYSIA":null,"NZ":null,"RUSSIA":null,"SAFR":null,"SINGP":null,"SPAIN":null,"UK":433.0,"USA":17831.0},"1996":{"AUSTRALIA":206.0,"BAHRAIN":null,"CANADA":603.0,"CHINA":null,"EGYPT":null,"FINLAND":null,"FRANCE":null,"GERMANY\/FRANCE":null,"HKONG":null,"IND":null,"IRE":null,"ISRAEL":null,"JORDAN":null,"LUXEMBOURG":null,"MALAYSIA":null,"NZ":null,"RUSSIA":null,"SAFR":null,"SINGP":3.0,"SPAIN":null,"UK":330.0,"USA":17719.0},"1997":{"AUSTRALIA":385.0,"BAHRAIN":null,"CANADA":801.0,"CHINA":null,"EGYPT":null,"FINLAND":null,"FRANCE":null,"GERMANY\/FRANCE":null,"HKONG":null,"IND":null,"IRE":null,"ISRAEL":null,"JORDAN":null,"LUXEMBOURG":null,"MALAYSIA":null,"NZ":null,"RUSSIA":null,"SAFR":null,"SINGP":2.0,"SPAIN":null,"UK":445.0,"USA":15934.0},"1998":{"AUSTRALIA":532.0,"BAHRAIN":null,"CANADA":735.0,"CHINA":null,"EGYPT":null,"FINLAND":null,"FRANCE":null,"GERMANY\/FRANCE":null,"HKONG":null,"IND":null,"IRE":null,"ISRAEL":null,"JORDAN":null,"LUXEMBOURG":null,"MALAYSIA":null,"NZ":1.0,"RUSSIA":null,"SAFR":null,"SINGP":2.0,"SPAIN":null,"UK":1434.0,"USA":15863.0},"1999":{"AUSTRALIA":1830.0,"BAHRAIN":null,"CANADA":262.0,"CHINA":null,"EGYPT":null,"FINLAND":null,"FRANCE":null,"GERMANY\/FRANCE":null,"HKONG":null,"IND":null,"IRE":null,"ISRAEL":1.0,"JORDAN":null,"LUXEMBOURG":null,"MALAYSIA":null,"NZ":null,"RUSSIA":null,"SAFR":null,"SINGP":null,"SPAIN":null,"UK":1710.0,"USA":15882.0},"2000":{"AUSTRALIA":1424.0,"BAHRAIN":null,"CANADA":452.0,"CHINA":null,"EGYPT":null,"FINLAND":null,"FRANCE":null,"GERMANY\/FRANCE":null,"HKONG":null,"IND":null,"IRE":5.0,"ISRAEL":null,"JORDAN":null,"LUXEMBOURG":null,"MALAYSIA":null,"NZ":6.0,"RUSSIA":null,"SAFR":null,"SINGP":11.0,"SPAIN":null,"UK":1437.0,"USA":6097.0},"2001":{"AUSTRALIA":3607.0,"BAHRAIN":null,"CANADA":803.0,"CHINA":2.0,"EGYPT":null,"FINLAND":1.0,"FRANCE":null,"GERMANY\/FRANCE":null,"HKONG":7.0,"IND":1.0,"IRE":6.0,"ISRAEL":36.0,"JORDAN":null,"LUXEMBOURG":null,"MALAYSIA":3.0,"NZ":135.0,"RUSSIA":null,"SAFR":null,"SINGP":40.0,"SPAIN":null,"UK":6101.0,"USA":5076.0},"2002":{"AUSTRALIA":4468.0,"BAHRAIN":null,"CANADA":622.0,"CHINA":2.0,"EGYPT":1.0,"FINLAND":3.0,"FRANCE":null,"GERMANY\/FRANCE":null,"HKONG":4.0,"IND":1.0,"IRE":9.0,"ISRAEL":1.0,"JORDAN":null,"LUXEMBOURG":null,"MALAYSIA":2.0,"NZ":283.0,"RUSSIA":null,"SAFR":null,"SINGP":45.0,"SPAIN":null,"UK":9959.0,"USA":10347.0},"2003":{"AUSTRALIA":5080.0,"BAHRAIN":null,"CANADA":1273.0,"CHINA":5.0,"EGYPT":null,"FINLAND":7.0,"FRANCE":1.0,"GERMANY\/FRANCE":null,"HKONG":2.0,"IND":1.0,"IRE":8.0,"ISRAEL":2.0,"JORDAN":null,"LUXEMBOURG":null,"MALAYSIA":1.0,"NZ":343.0,"RUSSIA":1.0,"SAFR":1.0,"SINGP":28.0,"SPAIN":1.0,"UK":9560.0,"USA":15144.0},"2004":{"AUSTRALIA":5695.0,"BAHRAIN":null,"CANADA":1923.0,"CHINA":4.0,"EGYPT":null,"FINLAND":null,"FRANCE":8.0,"GERMANY\/FRANCE":null,"HKONG":2.0,"IND":18.0,"IRE":13.0,"ISRAEL":null,"JORDAN":null,"LUXEMBOURG":null,"MALAYSIA":2.0,"NZ":612.0,"RUSSIA":1.0,"SAFR":1.0,"SINGP":65.0,"SPAIN":null,"UK":11038.0,"USA":20700.0},"2005":{"AUSTRALIA":5844.0,"BAHRAIN":null,"CANADA":1577.0,"CHINA":3.0,"EGYPT":null,"FINLAND":1.0,"FRANCE":3.0,"GERMANY\/FRANCE":null,"HKONG":2.0,"IND":78.0,"IRE":10.0,"ISRAEL":1.0,"JORDAN":null,"LUXEMBOURG":null,"MALAYSIA":3.0,"NZ":670.0,"RUSSIA":null,"SAFR":5.0,"SINGP":112.0,"SPAIN":null,"UK":12930.0,"USA":16728.0},"2006":{"AUSTRALIA":6015.0,"BAHRAIN":null,"CANADA":1915.0,"CHINA":4.0,"EGYPT":null,"FINLAND":15.0,"FRANCE":16.0,"GERMANY\/FRANCE":null,"HKONG":4.0,"IND":163.0,"IRE":32.0,"ISRAEL":null,"JORDAN":null,"LUXEMBOURG":null,"MALAYSIA":7.0,"NZ":830.0,"RUSSIA":1.0,"SAFR":3.0,"SINGP":47.0,"SPAIN":1.0,"UK":12829.0,"USA":13213.0},"2007":{"AUSTRALIA":7476.0,"BAHRAIN":null,"CANADA":2136.0,"CHINA":13.0,"EGYPT":1.0,"FINLAND":59.0,"FRANCE":13.0,"GERMANY\/FRANCE":null,"HKONG":10.0,"IND":343.0,"IRE":56.0,"ISRAEL":3.0,"JORDAN":null,"LUXEMBOURG":null,"MALAYSIA":11.0,"NZ":1359.0,"RUSSIA":3.0,"SAFR":6.0,"SINGP":27.0,"SPAIN":null,"UK":14969.0,"USA":13597.0},"2008":{"AUSTRALIA":7191.0,"BAHRAIN":null,"CANADA":2031.0,"CHINA":20.0,"EGYPT":1.0,"FINLAND":32.0,"FRANCE":13.0,"GERMANY\/FRANCE":1.0,"HKONG":5.0,"IND":478.0,"IRE":76.0,"ISRAEL":1.0,"JORDAN":null,"LUXEMBOURG":null,"MALAYSIA":16.0,"NZ":1132.0,"RUSSIA":null,"SAFR":9.0,"SINGP":27.0,"SPAIN":null,"UK":13407.0,"USA":16589.0},"2009":{"AUSTRALIA":6217.0,"BAHRAIN":null,"CANADA":2860.0,"CHINA":16.0,"EGYPT":3.0,"FINLAND":23.0,"FRANCE":13.0,"GERMANY\/FRANCE":4.0,"HKONG":9.0,"IND":803.0,"IRE":46.0,"ISRAEL":5.0,"JORDAN":1.0,"LUXEMBOURG":null,"MALAYSIA":11.0,"NZ":1136.0,"RUSSIA":10.0,"SAFR":21.0,"SINGP":26.0,"SPAIN":null,"UK":12386.0,"USA":20906.0},"2010":{"AUSTRALIA":3687.0,"BAHRAIN":null,"CANADA":2795.0,"CHINA":17.0,"EGYPT":null,"FINLAND":10.0,"FRANCE":13.0,"GERMANY\/FRANCE":null,"HKONG":17.0,"IND":326.0,"IRE":16.0,"ISRAEL":3.0,"JORDAN":null,"LUXEMBOURG":null,"MALAYSIA":2.0,"NZ":359.0,"RUSSIA":4.0,"SAFR":8.0,"SINGP":84.0,"SPAIN":null,"UK":8075.0,"USA":21279.0},"2011":{"AUSTRALIA":2546.0,"BAHRAIN":1.0,"CANADA":3480.0,"CHINA":12.0,"EGYPT":null,"FINLAND":12.0,"FRANCE":8.0,"GERMANY\/FRANCE":2.0,"HKONG":5.0,"IND":433.0,"IRE":5.0,"ISRAEL":3.0,"JORDAN":null,"LUXEMBOURG":3.0,"MALAYSIA":1.0,"NZ":246.0,"RUSSIA":8.0,"SAFR":9.0,"SINGP":10.0,"SPAIN":null,"UK":4323.0,"USA":24075.0},"2012":{"AUSTRALIA":4127.0,"BAHRAIN":null,"CANADA":4650.0,"CHINA":247.0,"EGYPT":4.0,"FINLAND":87.0,"FRANCE":29.0,"GERMANY\/FRANCE":4.0,"HKONG":12.0,"IND":518.0,"IRE":61.0,"ISRAEL":4.0,"JORDAN":79.0,"LUXEMBOURG":86.0,"MALAYSIA":3.0,"NZ":339.0,"RUSSIA":12.0,"SAFR":33.0,"SINGP":13.0,"SPAIN":1.0,"UK":11187.0,"USA":36735.0},"2013":{"AUSTRALIA":4988.0,"BAHRAIN":2.0,"CANADA":9314.0,"CHINA":275.0,"EGYPT":4.0,"FINLAND":49.0,"FRANCE":41.0,"GERMANY\/FRANCE":15.0,"HKONG":30.0,"IND":847.0,"IRE":55.0,"ISRAEL":4.0,"JORDAN":83.0,"LUXEMBOURG":37.0,"MALAYSIA":1.0,"NZ":602.0,"RUSSIA":32.0,"SAFR":63.0,"SINGP":57.0,"SPAIN":3.0,"UK":19714.0,"USA":53754.0},"2014":{"AUSTRALIA":4163.0,"BAHRAIN":2.0,"CANADA":9688.0,"CHINA":155.0,"EGYPT":1.0,"FINLAND":27.0,"FRANCE":44.0,"GERMANY\/FRANCE":9.0,"HKONG":24.0,"IND":626.0,"IRE":56.0,"ISRAEL":53.0,"JORDAN":648.0,"LUXEMBOURG":13.0,"MALAYSIA":2.0,"NZ":492.0,"RUSSIA":18.0,"SAFR":50.0,"SINGP":44.0,"SPAIN":null,"UK":16074.0,"USA":43890.0},"2015":{"AUSTRALIA":5659.0,"BAHRAIN":4.0,"CANADA":10370.0,"CHINA":98.0,"EGYPT":11.0,"FINLAND":32.0,"FRANCE":39.0,"GERMANY\/FRANCE":23.0,"HKONG":23.0,"IND":971.0,"IRE":72.0,"ISRAEL":145.0,"JORDAN":145.0,"LUXEMBOURG":3.0,"MALAYSIA":5.0,"NZ":789.0,"RUSSIA":42.0,"SAFR":48.0,"SINGP":80.0,"SPAIN":null,"UK":21457.0,"USA":46206.0},"2016":{"AUSTRALIA":5124.0,"BAHRAIN":18.0,"CANADA":6984.0,"CHINA":127.0,"EGYPT":28.0,"FINLAND":50.0,"FRANCE":43.0,"GERMANY\/FRANCE":19.0,"HKONG":27.0,"IND":856.0,"IRE":214.0,"ISRAEL":132.0,"JORDAN":67.0,"LUXEMBOURG":2.0,"MALAYSIA":5.0,"NZ":1142.0,"RUSSIA":36.0,"SAFR":45.0,"SINGP":116.0,"SPAIN":1.0,"UK":24896.0,"USA":46919.0},"2017":{"AUSTRALIA":5788.0,"BAHRAIN":32.0,"CANADA":4950.0,"CHINA":68.0,"EGYPT":74.0,"FINLAND":73.0,"FRANCE":41.0,"GERMANY\/FRANCE":9.0,"HKONG":34.0,"IND":696.0,"IRE":332.0,"ISRAEL":58.0,"JORDAN":86.0,"LUXEMBOURG":1.0,"MALAYSIA":7.0,"NZ":1298.0,"RUSSIA":31.0,"SAFR":20.0,"SINGP":31.0,"SPAIN":null,"UK":31060.0,"USA":60973.0},"2018":{"AUSTRALIA":5525.0,"BAHRAIN":36.0,"CANADA":3904.0,"CHINA":79.0,"EGYPT":60.0,"FINLAND":54.0,"FRANCE":27.0,"GERMANY\/FRANCE":11.0,"HKONG":28.0,"IND":874.0,"IRE":242.0,"ISRAEL":60.0,"JORDAN":34.0,"LUXEMBOURG":null,"MALAYSIA":4.0,"NZ":904.0,"RUSSIA":15.0,"SAFR":7.0,"SINGP":30.0,"SPAIN":1.0,"UK":33936.0,"USA":59513.0},"2019":{"AUSTRALIA":5806.0,"BAHRAIN":36.0,"CANADA":4330.0,"CHINA":57.0,"EGYPT":68.0,"FINLAND":45.0,"FRANCE":34.0,"GERMANY\/FRANCE":13.0,"HKONG":27.0,"IND":947.0,"IRE":178.0,"ISRAEL":48.0,"JORDAN":15.0,"LUXEMBOURG":null,"MALAYSIA":6.0,"NZ":997.0,"RUSSIA":12.0,"SAFR":10.0,"SINGP":30.0,"SPAIN":3.0,"UK":34174.0,"USA":56752.0},"2020":{"AUSTRALIA":6086.0,"BAHRAIN":31.0,"CANADA":3749.0,"CHINA":91.0,"EGYPT":32.0,"FINLAND":35.0,"FRANCE":22.0,"GERMANY\/FRANCE":8.0,"HKONG":21.0,"IND":1280.0,"IRE":146.0,"ISRAEL":29.0,"JORDAN":2.0,"LUXEMBOURG":null,"MALAYSIA":3.0,"NZ":1032.0,"RUSSIA":21.0,"SAFR":6.0,"SINGP":34.0,"SPAIN":8.0,"UK":34948.0,"USA":44026.0},"2021":{"AUSTRALIA":5239.0,"BAHRAIN":32.0,"CANADA":3900.0,"CHINA":99.0,"EGYPT":44.0,"FINLAND":37.0,"FRANCE":26.0,"GERMANY\/FRANCE":79.0,"HKONG":22.0,"IND":1213.0,"IRE":90.0,"ISRAEL":30.0,"JORDAN":1.0,"LUXEMBOURG":null,"MALAYSIA":3.0,"NZ":952.0,"RUSSIA":20.0,"SAFR":6.0,"SINGP":52.0,"SPAIN":2.0,"UK":34006.0,"USA":42734.0},"2022":{"AUSTRALIA":4992.0,"BAHRAIN":1.0,"CANADA":3480.0,"CHINA":37.0,"EGYPT":4.0,"FINLAND":42.0,"FRANCE":27.0,"GERMANY\/FRANCE":97.0,"HKONG":30.0,"IND":1108.0,"IRE":41.0,"ISRAEL":13.0,"JORDAN":3.0,"LUXEMBOURG":1.0,"MALAYSIA":3.0,"NZ":895.0,"RUSSIA":4.0,"SAFR":10.0,"SINGP":62.0,"SPAIN":6.0,"UK":37862.0,"USA":49743.0}};
+  
+  
+  // Create root element
+  // https://www.amcharts.com/docs/v5/getting-started/#Root_element
+  var root = am5.Root.new("chartdiv");
+  
+  root.numberFormatter.setAll({
+    numberFormat: "#a",
+  
+    // Group only into M (millions), and B (billions)
+    bigNumberPrefixes: [
+      { number: 1e6, suffix: "M" },
+      { number: 1e9, suffix: "B" }
+    ],
+  
+    // Do not use small number prefixes at all
+    smallNumberPrefixes: []
+  });
+  
+  var stepDuration = 1000;
+  
+  
+  // Set themes
+  // https://www.amcharts.com/docs/v5/concepts/themes/
+  root.setThemes([am5themes_Animated.new(root)]);
+  
+  
+  // Create chart
+  // https://www.amcharts.com/docs/v5/charts/xy-chart/
+  var chart = root.container.children.push(am5xy.XYChart.new(root, {
+    panX: true,
+    panY: true,
+    wheelX: "none",
+    wheelY: "none"
+  }));
+  
+  
+  // We don't want zoom-out button to appear while animating, so we hide it at all
+  chart.zoomOutButton.set("forceHidden", true);
+  
+  
+  // Create axes
+  // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+  var yRenderer = am5xy.AxisRendererY.new(root, {
+    minGridDistance: 20,
+    inversed: true
+  });
+  // hide grid
+  yRenderer.grid.template.set("visible", false);
+  
+  var yAxis = chart.yAxes.push(am5xy.CategoryAxis.new(root, {
+    maxDeviation: 0,
+    categoryField: "network",
+    renderer: yRenderer
+  }));
+  
+  var xAxis = chart.xAxes.push(am5xy.ValueAxis.new(root, {
+    maxDeviation: 0,
+    min: 0,
+    strictMinMax: true,
+    extraMax: 0.1,
+    renderer: am5xy.AxisRendererX.new(root, {})
+  }));
+  
+  xAxis.set("interpolationDuration", stepDuration / 10);
+  xAxis.set("interpolationEasing", am5.ease.linear);
+  
+  
+  // Add series
+  // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+  var series = chart.series.push(am5xy.ColumnSeries.new(root, {
+    xAxis: xAxis,
+    yAxis: yAxis,
+    valueXField: "value",
+    categoryYField: "network"
+  }));
+  
+  // Rounded corners for columns
+  series.columns.template.setAll({ cornerRadiusBR: 5, cornerRadiusTR: 5 });
+  
+  // Make each column to be of a different color
+  series.columns.template.adapters.add("fill", function (fill, target) {
+    return chart.get("colors").getIndex(series.columns.indexOf(target));
+  });
+  
+  series.columns.template.adapters.add("stroke", function (stroke, target) {
+    return chart.get("colors").getIndex(series.columns.indexOf(target));
+  });
+  
+  // Add label bullet
+  series.bullets.push(function () {
+    return am5.Bullet.new(root, {
+      locationX: 1,
+      sprite: am5.Label.new(root, {
+        text: "{valueXWorking.formatNumber('#.# a')}",
+        fill: root.interfaceColors.get("alternativeText"),
+        centerX: am5.p100,
+        centerY: am5.p50,
+        populateText: true
+      })
+    });
+  });
+  
+  var label = chart.plotContainer.children.push(am5.Label.new(root, {
+    text: "1990",
+    fontSize: "8em",
+    opacity: 0.2,
+    x: am5.p100,
+    y: am5.p100,
+    centerY: am5.p100,
+    centerX: am5.p100
+  }));
+  
+  // Get series item by category
+  function getSeriesItem(category) {
+    for (var i = 0; i < series.dataItems.length; i++) {
+      var dataItem = series.dataItems[i];
+      if (dataItem.get("categoryY") == category) {
+        return dataItem;
+      }
+    }
+  }
+  
+  // Axis sorting
+  function sortCategoryAxis() {
+    // sort by value
+    series.dataItems.sort(function (x, y) {
+      return y.get("valueX") - x.get("valueX"); // descending
+      //return x.get("valueX") - y.get("valueX"); // ascending
+    });
+  
+    // go through each axis item
+    am5.array.each(yAxis.dataItems, function (dataItem) {
+      // get corresponding series item
+      var seriesDataItem = getSeriesItem(dataItem.get("category"));
+  
+      if (seriesDataItem) {
+        // get index of series data item
+        var index = series.dataItems.indexOf(seriesDataItem);
+        // calculate delta position
+        var deltaPosition =
+          (index - dataItem.get("index", 0)) / series.dataItems.length;
+        // set index to be the same as series data item index
+        if (dataItem.get("index") != index) {
+          dataItem.set("index", index);
+          // set deltaPosition instanlty
+          dataItem.set("deltaPosition", -deltaPosition);
+          // animate delta position to 0
+          dataItem.animate({
+            key: "deltaPosition",
+            to: 0,
+            duration: stepDuration / 2,
+            easing: am5.ease.out(am5.ease.cubic)
+          });
+        }
+      }
+    });
+    // sort axis items by index.
+    // This changes the order instantly, but as deltaPosition is set, they keep in the same places and then animate to true positions.
+    yAxis.dataItems.sort(function (x, y) {
+      return x.get("index") - y.get("index");
+    });
+  }
+  
+  var year = 1990;
+  
+  // update data with values each 1.5 sec
+  var interval = setInterval(function () {
+    year++;
+  
+    if (year > 2022) {
+      clearInterval(interval);
+      clearInterval(sortInterval);
+    }
+  
+    updateData();
+  }, stepDuration);
+  
+  var sortInterval = setInterval(function () {
+    sortCategoryAxis();
+  }, 100);
+  
+  function setInitialData() {
+    var d = allData[year];
+  
+    for (var n in d) {
+      series.data.push({ network: n, value: d[n] });
+      yAxis.data.push({ network: n });
+    }
+  }
+  
+  function updateData() {
+    var itemsWithNonZero = 0;
+  
+    if (allData[year]) {
+      label.set("text", year.toString());
+  
+      am5.array.each(series.dataItems, function (dataItem) {
+        var category = dataItem.get("categoryY");
+        var value = allData[year][category];
+        // var previousYear = year
+
+        // if (previousYear < 1990) {
+        //   value = value
+        // }
+        // else if (previousYear >= 1990) {
+        //   for (var i = 1990; i < parseInt(year); i++) {
+        //     value = value + allData[i.toString()][category]
+        //     // console.log(value)
+        //   }
+          
+        // }
+
+        if (value > 0) {
+          itemsWithNonZero++;
+        }
+  
+        dataItem.animate({
+          key: "valueX",
+          to: value,
+          duration: stepDuration,
+          easing: am5.ease.linear
+        });
+        dataItem.animate({
+          key: "valueXWorking",
+          to: value,
+          duration: stepDuration,
+          easing: am5.ease.linear
+        });
+      });
+  
+      yAxis.zoom(0, itemsWithNonZero / yAxis.dataItems.length);
+    }
+  }
+  
+  setInitialData();
+  setTimeout(function () {
+    year++;
+    updateData();
+  }, 50);
+  
+  // Make stuff animate on load
+  // https://www.amcharts.com/docs/v5/concepts/animations/
+  series.appear(1000);
+  chart.appear(1000, 100);
+  
+  }); // end am5.ready()
+  </script>
+    
+    <a href="./bar-race.html"><button class="button" onclick="location.reload()">Refresh Page</button></a>
+     
+    </body>
+  </html>
+  
