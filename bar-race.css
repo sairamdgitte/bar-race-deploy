@@ -16,19 +16,33 @@ h1 {
 }
 
 h2 {
-   background-image: linear-gradient(to right, #5E5AA8, #FF5F6D);
-  /* Gradient background */
+  background-image: linear-gradient(to right, #5E5AA8, #FF5F6D);
   -webkit-background-clip: text;
-  /* Apply the background to the text */
   -webkit-text-fill-color: transparent;
-  /* Make the text transparent */
-  font-family: 'Helvetica Neue', sans-serif;
+  background-size: 200% auto;
+  animation: animate-gradient 3s ease infinite;
   /* Font family */
   font-size: 2.5em;
   /* Font size */
   text-align: center;
   /* Center align the text */
+
 }
+
+@keyframes animate-gradient {
+  0% {
+      background-position: 0 50%;
+  }
+
+  50% {
+      background-position: 100% 50%;
+  }
+
+  100% {
+      background-position: 0 50%;
+  }
+}
+
 .button-container {
   text-align: center;
 }
