@@ -14,7 +14,21 @@ h1 {
     text-align: center;
     /* Center align the text */
   }
-
+  h2 {
+    background-image: linear-gradient(to right,#FF5F6D, #5E5AA8);
+    /* Gradient background */
+    -webkit-background-clip: text;
+    /* Apply the background to the text */
+    -webkit-text-fill-color: transparent;
+    /* Make the text transparent */
+    font-family: 'Helvetica Neue', sans-serif;
+    /* Font family */
+    font-size: 1em;
+    /* Font size */
+    text-align: center;
+    /* Center align the text */
+    animation: animate-gradient 2s ease infinite;
+  }
   h3 {
     background-image: linear-gradient(to right, #5E5AA8, #FF5F6D);
     /* Gradient background */
@@ -43,11 +57,17 @@ h1 {
     align-items: center;
     text-align: center;
     margin: 1rem;
+    margin-left: 710px;
 
 }
+.legend{
+  display: flex;
+  flex-direction: row;
+  margin-left: 400px;
   
+}
   
   #chartdiv {
     width: 100%;
-    height: 500px;
+    height: 400px;
   }
